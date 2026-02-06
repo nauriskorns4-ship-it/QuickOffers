@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+<meta charset="UTF-8">
+<title>Smart Deals – Finance, Jobs & Fashion</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+/* ===== CPL LINKS ===== */
+const CPL_FINANCE = "TAVS_FINANCE_CPL_LINKS";
+const CPL_JOBS    = "TAVS_JOBS_CPL_LINKS";
+const CPL_FASHION = "TAVS_FASHION_CPL_LINKS";
+</script>
+
+<style>
+body{margin:0;font-family:Arial;background:#f4f6f8;color:#222}
+header{background:#111;color:#fff;padding:25px;text-align:center;position:relative}
+.lang{position:absolute;top:15px;right:15px;padding:8px 12px;border:none;border-radius:6px;cursor:pointer}
+.container{max-width:1100px;margin:auto;padding:25px}
+.section{margin-bottom:40px}
+.card{background:#fff;border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.08);overflow:hidden}
+.card img{width:100%;height:240px;object-fit:cover}
+.content{padding:25px}
+h1{margin-top:0}
+.cta{display:inline-block;margin-top:15px;padding:14px 22px;color:#fff;border-radius:10px;text-decoration:none;font-weight:bold}
+.finance{background:#28a745}
+.jobs{background:#007bff}
+.fashion{background:#e83e8c}
+footer{text-align:center;font-size:13px;color:#666;padding:20px}
+
+/* POPUP */
+#popup{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.6);display:none;justify-content:center;align-items:center;z-index:999}
+.popup-box{background:#fff;padding:25px;border-radius:14px;width:320px;text-align:center}
+.popup-box input{width:90%;padding:10px;margin:10px 0}
+.popup-box button{padding:10px 15px;margin:5px}
+</style>
+</head>
+
+<body>
+
+<header>
+  <button class="lang" onclick="toggleLang()">LV / EN</button>
+  <h1 id="mainTitle">Gudrie piedāvājumi</h1>
+  <p id="mainSub">Finanses • Darbs • Mode</p>
+</header>
+
+<div class="container">
+
+  <!-- FINANCE -->
+  <div class="section card">
+    <img src="https://images.unsplash.com/photo-1559526324-593bc073d938?auto=format&fit=crop&w=1200&q=80" alt="Finance Deals">
+    <div class="content">
+      <h2 data-lv="Ātrie finanšu piedāvājumi" data-en="Fast Financial Offers"></h2>
+      <p data-lv="Saņem piedāvājumu dažu minūšu laikā. Bez liekas birokrātijas."
+         data-en="Get an offer in minutes with minimal requirements."></p>
+      <a class="cta finance" id="financeBtn" target="_blank"></a>
+    </div>
+  </div>
+
+  <!-- JOBS -->
+  <div class="section card">
+    <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80" alt="Jobs in Europe">
+    <div class="content">
+      <h2 data-lv="Darbs Eiropā ar izmitināšanu" data-en="Jobs in Europe with Accommodation"></h2>
+      <p data-lv="Noliktavas, viesnīcas, rūpnīcas. Alga no 2000€+."
+         data-en="Warehouses, hotels, factories. Salary from €2000+."></p>
+      <a class="cta jobs" id="jobsBtn" target="_blank"></a>
+    </div>
+  </div>
+
+  <!-- FASHION -->
+  <div class="section card">
+    <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=80" alt="Fashion Deals">
+    <div class="content">
+      <h2 data-lv="Modes atlaides" data-en="Fashion Discounts"></h2>
+      <p data-lv="Populāri zīmoli ar lielām atlaidēm. Ierobežots laiks."
+         data-en="Popular brands with big discounts. Limited time."></p>
+      <a class="cta fashion" id="fashionBtn" target="_blank"></a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+© 2026 Smart Deals • Secure • Trusted
+</footer>
+
+<!-- POPUP -->
+<div id="popup">
+  <div class="popup-box">
+    <h3 id="popupTitle"></h3>
+    <p id="popupText"></p>
+    <input type="email" placeholder="Email">
+    <br>
+    <button onclick="submitPopup()">Turpināt</button>
+    <button onclick="closePopup()">Aizvērt</button>
+  </div>
+</div>
+
+<script>
+let lang="lv";
+
+function toggleLang(){
+  lang = lang==="lv" ? "en" : "lv";
+  document.querySelectorAll("[data-lv]").forEach(el=>{
+    el.textContent = el.dataset[lang];
+  });
+
+  document.getElementById("mainTitle").textContent =
+    lang==="lv"?"Gudrie piedāvājumi":"Smart Deals";
+
+  document.getElementById("mainSub").textContent =
+    lang==="lv"?"Finanses • Darbs • Mode":"Finance • Jobs • Fashion";
+
+  document.getElementById("financeBtn").textContent =
+    lang==="lv"?"Pieteikties":"Apply Now";
+
+  document.getElementById("jobsBtn").textContent =
+    lang==="lv"?"Skatīt vakances":"View Jobs";
+
+  document.getElementById("fashionBtn").textContent =
+    lang==="lv"?"Apskatīt piedāvājumus":"View Deals";
+
+  document.getElementById("popupTitle").textContent =
+    lang==="lv"?"🔥 Bonus piedāvājums":"🔥 Bonus Offer";
+
+  document.getElementById("popupText").textContent =
+    lang==="lv"?"Ievadi e-pastu un saņem labāko piedāvājumu":
+               "Enter your email to unlock the best offer";
+}
+
+toggleLang();
+
+/* LINKS */
+document.getElementById("financeBtn").href = CPL_FINANCE;
+document.getElementById("jobsBtn").href    = CPL_JOBS;
+document.getElementById("fashionBtn").href = CPL_FASHION;
+
+/* POPUP 1x */
+const key="popupSeen";
+if(!localStorage.getItem(key)){
+  setTimeout(()=>{document.getElementById("popup").style.display="flex"},5000);
+}
+
+function closePopup(){
+  localStorage.setItem(key,"1");
+  document.getElementById("popup").style.display="none";
+}
+
+function submitPopup(){
+  localStorage.setItem(key,"1");
+  window.location.href=CPL_FINANCE;
+}
+
+/* AUTO REDIRECT (soft) */
+setTimeout(()=>{window.location.href=CPL_FINANCE},20000);
+</script>
+
+</body>
+</html>
