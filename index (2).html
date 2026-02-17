@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QuickOffers – EU Platform</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --accent:#00c6ff;
+  --accent2:#22ffaa;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+
+html{
+  scroll-behavior:smooth;
+  scroll-snap-type:y mandatory;
+}
+
+body{
+  background:#050810;
+  color:white;
+  overflow-x:hidden;
+}
+
+/* Header */
+header{
+  position:fixed;
+  top:0;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 40px;
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(10px);
+  z-index:1000;
+}
+
+.logo{
+  font-weight:800;
+  font-size:20px;
+  color:var(--accent);
+}
+
+.lang-switch button{
+  background:none;
+  border:1px solid var(--accent);
+  color:white;
+  padding:5px 12px;
+  margin-left:8px;
+  cursor:pointer;
+  border-radius:20px;
+  transition:0.3s;
+}
+
+.lang-switch button:hover{
+  background:var(--accent);
+  color:black;
+}
+
+/* Scroll progress */
+#progress{
+  position:fixed;
+  top:0;
+  left:0;
+  height:4px;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  width:0%;
+  z-index:9999;
+}
+
+/* Sections */
+.video-section{
+  scroll-snap-align:start;
+  position:relative;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:120px 20px;
+  overflow:hidden;
+}
+
+.video-section video{
+  position:absolute;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:-3;
+  opacity:0.35;
+}
+
+.video-section::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.6);
+  z-index:-2;
+}
+
+/* Euro rain */
+.euro-container{
+  position:absolute;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  z-index:-1;
+}
+
+.euro{
+  position:absolute;
+  color:rgba(255,215,0,0.4);
+  animation:fall linear infinite;
+}
+
+@keyframes fall{
+  0%{transform:translateY(-100px);}
+  100%{transform:translateY(120vh);}
+}
+
+h1,h2{
+  font-weight:800;
+  background:linear-gradient(45deg,var(--accent),var(--accent2));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+h1{font-size:55px;}
+h2{font-size:40px;margin-bottom:20px;}
+
+p{
+  max-width:700px;
+  margin:auto;
+  margin-bottom:30px;
+  font-size:18px;
+  opacity:0.9;
+}
+
+.btn{
+  display:inline-block;
+  padding:15px 35px;
+  background:linear-gradient(45deg,var(--accent),var(--accent2));
+  color:black;
+  font-weight:700;
+  border-radius:40px;
+  text-decoration:none;
+  transition:0.3s;
+}
+
+.btn:hover{
+  transform:scale(1.1);
+  box-shadow:0 0 30px var(--accent2);
+}
+
+/* Testimonials */
+.testimonials{
+  padding:100px 20px;
+  background:#0e1628;
+  text-align:center;
+}
+
+.review-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:30px;
+  margin-top:40px;
+}
+
+.review{
+  background:rgba(255,255,255,0.05);
+  padding:25px;
+  border-radius:20px;
+}
+
+.review img{
+  width:70px;
+  height:70px;
+  border-radius:50%;
+  margin-bottom:15px;
+}
+
+/* Footer */
+footer{
+  background:#0b1f3a;
+  padding:50px 20px;
+  text-align:center;
+}
+
+footer a{
+  color:white;
+  margin:0 12px;
+  text-decoration:none;
+}
+
+footer a:hover{
+  color:var(--accent);
+}
+
+footer p{
+  margin-top:20px;
+  opacity:0.6;
+  font-size:14px;
+}
+</style>
+</head>
+
+<body>
+
+<div id="progress"></div>
+
+<header>
+<div class="logo">QuickOffers EU</div>
+<div class="lang-switch">
+<button onclick="setLang('lv')">LV</button>
+<button onclick="setLang('en')">EN</button>
+</div>
+</header>
+
+<!-- HERO -->
+<section class="video-section">
+<video autoplay muted loop playsinline>
+<source src="https://www.w3schools.com/howto/rain.mp4" type="video/mp4">
+</video>
+<div class="euro-container"></div>
+<div>
+<h1 data-lv="Labākie piedāvājumi Eiropā"
+    data-en="Best Offers Across Europe">Labākie piedāvājumi Eiropā</h1>
+
+<p data-lv="Finanses • Darbs • Mode"
+   data-en="Finance • Jobs • Fashion">Finanses • Darbs • Mode</p>
+
+<a href="#finance" class="btn"
+   data-lv="Sākt tagad"
+   data-en="Start Now">Sākt tagad</a>
+</div>
+</section>
+
+<!-- FINANCE -->
+<section id="finance" class="video-section">
+<video autoplay muted loop playsinline>
+<source src="https://www.w3schools.com/howto/rain.mp4" type="video/mp4">
+</video>
+<div class="euro-container"></div>
+<div>
+<h2 data-lv="Finanšu piedāvājumi"
+    data-en="Finance Offers">Finanšu piedāvājumi</h2>
+
+<p data-lv="Salīdzini aizdevumus un kredītus visā Eiropā."
+   data-en="Compare loans and credit offers across Europe.">
+Salīdzini aizdevumus un kredītus visā Eiropā.</p>
+
+<a href="#" class="btn"
+   data-lv="Skatīt piedāvājumus"
+   data-en="View Offers">Skatīt piedāvājumus</a>
+</div>
+</section>
+
+<!-- JOBS -->
+<section class="video-section">
+<video autoplay muted loop playsinline>
+<source src="https://www.w3schools.com/howto/rain.mp4" type="video/mp4">
+</video>
+<div class="euro-container"></div>
+<div>
+<h2 data-lv="Darba piedāvājumi"
+    data-en="Job Offers">Darba piedāvājumi</h2>
+
+<p data-lv="Vakances Eiropā ar izmitināšanu un labu atalgojumu."
+   data-en="Jobs across Europe with accommodation and good salary.">
+Vakances Eiropā ar izmitināšanu un labu atalgojumu.</p>
+
+<a href="#" class="btn"
+   data-lv="Skatīt darbus"
+   data-en="View Jobs">Skatīt darbus</a>
+</div>
+</section>
+
+<!-- FASHION -->
+<section class="video-section">
+<video autoplay muted loop playsinline>
+<source src="https://www.w3schools.com/howto/rain.mp4" type="video/mp4">
+</video>
+<div class="euro-container"></div>
+<div>
+<h2 data-lv="Brenda apģērbi"
+    data-en="Brand Fashion">Brenda apģērbi</h2>
+
+<p data-lv="Top EU zīmolu modes piedāvājumi par labākajām cenām."
+   data-en="Top EU brand fashion deals at the best prices.">
+Top EU zīmolu modes piedāvājumi par labākajām cenām.</p>
+
+<a href="#" class="btn"
+   data-lv="Skatīt kolekciju"
+   data-en="View Collection">Skatīt kolekciju</a>
+</div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+<h2 data-lv="Atsauksmes" data-en="Testimonials">Atsauksmes</h2>
+<div class="review-grid">
+<div class="review">
+<img src="https://randomuser.me/api/portraits/men/32.jpg">
+<p data-lv="Atradu darbu 2 nedēļās!"
+   data-en="Found a job in 2 weeks!">Atradu darbu 2 nedēļās!</p>
+</div>
+<div class="review">
+<img src="https://randomuser.me/api/portraits/women/44.jpg">
+<p data-lv="Ļoti ērti salīdzināt kredītus."
+   data-en="Very easy to compare loans.">Ļoti ērti salīdzināt kredītus.</p>
+</div>
+</div>
+</section>
+
+<footer>
+<a href="#">Privacy Policy</a>
+<a href="#">Terms & Conditions</a>
+<a href="#">Disclaimer</a>
+<p>© 2026 QuickOffers EU. All Rights Reserved.</p>
+</footer>
+
+<script>
+/* Scroll progress */
+window.onscroll=function(){
+  let winScroll=document.documentElement.scrollTop;
+  let height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+  document.getElementById("progress").style.width=(winScroll/height)*100+"%";
+};
+
+/* Euro rain */
+function createEuros(container){
+  for(let i=0;i<30;i++){
+    let span=document.createElement("span");
+    span.innerText="€";
+    span.classList.add("euro");
+    span.style.left=Math.random()*100+"%";
+    span.style.fontSize=(15+Math.random()*25)+"px";
+    span.style.animationDuration=(6+Math.random()*8)+"s";
+    container.appendChild(span);
+  }
+}
+document.querySelectorAll(".euro-container").forEach(c=>createEuros(c));
+
+/* Language switch */
+function setLang(lang){
+  document.querySelectorAll("[data-lv]").forEach(el=>{
+    el.innerText = el.getAttribute("data-"+lang);
+  });
+}
+</script>
+
+</body>
+</html>
